@@ -4,31 +4,40 @@ Web de 0701 Ingeniería C.A. (Lechería, Anzoátegui), empresa del Ing. Gabriel 
 
 ## Arquitectura
 
-Estática, sin dependencias: `public/` con HTML, CSS y JS. Se publica en Cloudflare Pages (directorio de salida `public`, sin comando de build). Sin secretos ni admin por ahora.
+Estática, sin dependencias en el navegador. Se publica en Cloudflare Pages con directorio de salida `public` y sin comando de build (las páginas se generan aquí y se suben hechas).
 
-- `public/index.html`: una sola página con seis "láminas" (portada, obras, servicios, cuadro de obras, empresa, contacto) y el pie como cajetín de plano.
-- `public/css/estilos.css`, `public/js/main.js` (menú móvil y cotas a escala).
-- `public/_headers`: CSP estricta y caché. Nada inline: el JSON-LD es un bloque de datos y no se ejecuta.
-- `fuentes/`: fotos originales que mandó la familia (1080 px). Las del brochure se extrajeron del PDF y son pequeñas (300 a 900 px).
+- `contenido.py`: todos los textos, servicios, obras (con su memoria descriptiva) y el cuadro de obras.
+- `build.py`: genera `public/index.html`, `public/obras/index.html` y una página de memoria descriptiva por obra en `public/obras/<slug>/`.
+- `herramientas/fotos.py`: corrige y exporta las fotos a WebP 800 y 1600 px en `public/img/fotos/`. Si existe la versión mejorada con Real-ESRGAN la usa; si no, la original.
+- `public/img/logo.svg` y `marca.svg`: logo vectorizado (potrace) a partir del PNG del brochure. Se pintan con `currentColor`.
+- `public/_headers`: CSP estricta y caché. Nada inline salvo el JSON-LD, que es un bloque de datos.
+- `fuentes/`: fotos originales que mandó la familia.
 
-Desarrollo local: `cd public && python3 -m http.server 8790`.
+Flujo: editar `contenido.py`, `python3 build.py`, revisar con `cd public && python3 -m http.server 8790`, commit y push.
 
-## Dirección de diseño (aprobada)
+### Fotos
 
-- **Concepto:** la web es un juego de planos. Cada sección es una lámina ("Lám. 02 · Obras"), el pie es un cajetín con RIF y representante legal, y las magnitudes reales de Plaza Mayor se dibujan como cotas a la misma escala. Fondo cuadriculado solo en la portada y en el plano de Plaza Mayor.
-- **Tipografía:** Archivo variable (titulares a `font-stretch:74%`, peso 640; texto a 100%), IBM Plex Mono para etiquetas, cotas, años y lugares. Alojadas en `public/fonts`.
-- **Colores:** `#0d2a4a` marino (fondo del brochure), `#1d4569` azul (muestreado del logo), `#f1b432` amarillo (acento del brochure), `#f5f3ee` papel de plano, `#23272b` grafito.
-- **Componentes:** botón rectangular marino con filete amarillo a la izquierda; enlaces subrayados; cotas con líneas de extensión y trazos a 45°. Cada obra sigue el mismo orden: dos fotos, año y lugar, título, el reto / lo que hicimos, cliente.
-- **No tiene:** "¿Por qué elegirnos?", contadores animados, testimonios, fotos de stock del brochure (ingeniero con laptop, almacén, topógrafos, asfaltado aéreo), números decorativos.
-- **Logo:** PNG del brochure con el fondo convertido en transparencia (azul y blanco), sin la línea del RIF. Pendiente el archivo vectorial original.
+Las fotos del brochure venían a 300 a 900 px. Se pasaron por Real-ESRGAN x4plus en CPU (`esrgan.py`, arquitectura RRDBNet sin basicsr) y después por `fotos.py`: CLAHE suave en luminancia, niveles al 0,4 y 99,6 %, saturación +8 %. Las del teléfono se reducen al 50 % antes de mejorarlas para que salgan a 2160 px.
+
+## Dirección de diseño
+
+- **Origen:** el brochure corporativo 2025. La portada copia su composición: foto arriba, franja blanca y panel marino en forma de techo, cuña amarilla a la izquierda y el 0701 gigante en blanco cortado por el borde inferior.
+- **Logo:** el 0701 se usa como supergráfico en portada, cabeceras de página, tarjeta de Plaza Mayor y contacto (blanco sobre marino o en tono sobre tono).
+- **Tipografía:** el brochure usa Gotham. Aquí Red Hat Display (titulares en mayúsculas 800, antetítulos con tracking .2em como el "INGENIERIA" del logo) y Red Hat Text para el texto. Alojadas en `public/fonts`.
+- **Colores:** `#0d2a4a` marino y `#f1b432` amarillo (muestreados del brochure), `#1d4569` azul (logo), `#0a2240` pie, `#f2f4f7` gris claro.
+- **Títulos a dos tonos** como en el brochure ("NUESTROS SERVICIOS"): sobre marino la segunda parte va en amarillo; sobre blanco lleva un subrayado amarillo grueso.
+- **Componentes:** botones con el borde derecho en diagonal; antetítulo con barra amarilla; secciones con cortes diagonales; esquinas rectas, sin sombras.
+- **Obras:** cada una tiene memoria descriptiva (objeto, descripción, alcance, datos técnicos, registro fotográfico) con índice lateral y visor de fotos.
+- **No tiene:** fotos de stock del brochure, testimonios, contadores animados.
 
 ## Pendientes del cliente
 
-- Proyecto Farmacia SAAS de Anaco: alcance, año y fotos.
-- Alquiler de equipos: andamios y herramientas que se puedan ofrecer.
+- Farmacia SAAS de Anaco: alcance, año y fotos.
+- Alquiler de equipos (andamios y herramientas): qué se ofrece.
 - Proyectos 2025 y 2026 que falten, y más historia de la empresa.
 - Fotos originales en alta (Digitel, Tijerazo, Polar, Plaza Mayor) y vídeos cortos de obra para minivídeos.
-- Logo en vector.
-- Confirmar Marina Kalina: en el brochure aparece con cliente Cervecería Polar y lugar Planta Barcelona, que parece un error; en la web va como "Marina Kalina, Anzoátegui".
+- Logo en vector original.
+- Depósito Tijerazo: confirmar ubicación y alcance exacto (la memoria se escribió a partir de las fotos).
+- Marina Kalina: en el brochure aparece con cliente Cervecería Polar y lugar Planta Barcelona, que parece un error; en la web va como "Marina Kalina, Anzoátegui".
 - Confirmar si Cocoyar y Perfoca siguen como aliados.
-- Dominio (luego actualizar og:image absoluta, canonical y sitemap).
+- Dominio (luego og:image absoluta, canonical y sitemap).
