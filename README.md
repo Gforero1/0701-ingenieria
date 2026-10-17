@@ -17,7 +17,7 @@ Flujo: editar `contenido.py`, `python3 build.py`, revisar con `cd public && pyth
 
 ### Fotos
 
-- **Mejoradas con ChatGPT (octubre 2026):** 18 fotos del brochure pasaron por ChatGPT con la instrucción de no añadir ni cambiar nada (`fuentes/chatgpt/`, exportadas con `herramientas/fotos_gpt.py`). Cada una se comparó con su original antes de aprobarla. Descartadas: `srv-ingenieria` (cara inventada) y `srv-levantamientos` (marca inventada en el equipo). En `digitel-antenas` el cielo gris pasó a azul. Originales del brochure en `fuentes/brochure/`.
+- **Mejoradas con ChatGPT (octubre 2026):** 18 fotos del brochure pasaron por ChatGPT con la instrucción de no añadir ni cambiar nada (`fuentes/chatgpt/`, exportadas con `herramientas/fotos_gpt.py`). Cada una se comparó con su original antes de aprobarla. `srv-ingenieria` no se usa de ChatGPT (inventaba la cara): va la original del teléfono que mandó la familia (`fuentes/gabriel-azotea-h.jpg`). `srv-levantamientos` salió bien al segundo intento, pidiendo no escribir marcas. En `digitel-antenas` el cielo gris pasó a azul. Originales del brochure en `fuentes/brochure/`.
 
 Las fotos del brochure venían a 300 a 900 px. Se pasaron por Real-ESRGAN x4plus en CPU (`esrgan.py`, arquitectura RRDBNet sin basicsr) y después por `fotos.py`: CLAHE suave en luminancia, niveles al 0,4 y 99,6 %, saturación +8 %. Las del teléfono se reducen al 50 % antes de mejorarlas para que salgan a 2160 px.
 
@@ -38,6 +38,7 @@ Las fotos del brochure venían a 300 a 900 px. Se pasaron por Real-ESRGAN x4plus
 - Farmacia SAAS de Anaco: alcance, año y fotos.
 - Alquiler de equipos (andamios y herramientas): qué se ofrece.
 - Proyectos 2025 y 2026 que falten, y más historia de la empresa.
+- Las fotos de la azotea con el Ing. Forero (`fuentes/gabriel-azotea-*.jpg`, `gabriel-escalera.jpg`): confirmar de qué obra son antes de ponerlas en una memoria.
 - Fotos originales en alta (Digitel, Tijerazo, Polar, Plaza Mayor) y vídeos cortos de obra para minivídeos.
 - Logo en vector original.
 - Depósito Tijerazo: confirmar ubicación y alcance exacto (la memoria se escribió a partir de las fotos).

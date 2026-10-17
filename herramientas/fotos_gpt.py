@@ -23,9 +23,10 @@ APROBADAS = {
     "digitel-crucero": "digitel-crucero", "digitel-torre": "digitel-torre", "digitel-andamio": "digitel-andamio",
     "digitel-izado": "digitel-izado", "digitel-antenas": "digitel-antenas", "digitel-azotea": "digitel-azotea",
     # servicios que reutilizan fotos de obra
+    "srv-levantamientos": "srv-levantamientos",  # segundo intento, sin marca inventada
     "srv-construccion": "tijerazo-foso", "srv-mantenimiento": "polar-revestimiento", "srv-telecom": "digitel-torre",
 }
-# Descartadas: srv-ingenieria (cara inventada), srv-levantamientos (marca inventada en el equipo)
+# srv-ingenieria no pasa por ChatGPT (inventaba la cara): se usa la foto original del teléfono (fuentes/gabriel-azotea-h.jpg)
 
 ruta_dim = os.path.join(SALIDA, "dimensiones.txt")
 dims = dict(l.split(None, 1) for l in open(ruta_dim).read().splitlines() if l.strip())

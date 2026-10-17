@@ -23,8 +23,8 @@ polar-tanques 1086 1448
 polar-escalera 1086 1448
 polar-bomba 1600 903
 polar-entrada 1448 1086
-srv-ingenieria 1600 999
+srv-ingenieria 1600 1200
 srv-construccion 1033 1522
 srv-mantenimiento 1087 1447
 srv-telecom 1078 1460
-srv-levantamientos 1600 991
+srv-levantamientos 1592 988
