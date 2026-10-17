@@ -38,7 +38,6 @@ Las fotos del brochure venían a 300 a 900 px. Se pasaron por Real-ESRGAN x4plus
 - Farmacia SAAS de Anaco: alcance, año y fotos.
 - Alquiler de equipos (andamios y herramientas): qué se ofrece.
 - Proyectos 2025 y 2026 que falten, y más historia de la empresa.
-- Las fotos de la azotea con el Ing. Forero (`fuentes/gabriel-azotea-*.jpg`, `gabriel-escalera.jpg`): confirmar de qué obra son antes de ponerlas en una memoria.
 - Fotos originales en alta (Digitel, Tijerazo, Polar, Plaza Mayor) y vídeos cortos de obra para minivídeos.
 - Logo en vector original.
 - Depósito Tijerazo: confirmar ubicación y alcance exacto (la memoria se escribió a partir de las fotos).

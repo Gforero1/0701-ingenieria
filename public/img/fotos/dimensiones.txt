@@ -28,3 +28,6 @@ srv-construccion 1033 1522
 srv-mantenimiento 1087 1447
 srv-telecom 1078 1460
 srv-levantamientos 1592 988
+digitel-supervision 1600 1200
+digitel-gabinete 1512 2016
+digitel-escalera 1512 2016

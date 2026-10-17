@@ -99,8 +99,10 @@ OBRAS = [
         "datos": [("Tecnología", "Telefonía celular"), ("Plan", "Sitios nuevos Huawei 2024–2025, compra 4"), ("Región", "Oriente"),
                   ("Estación destacada", "Crucero de Lechería")],
         "fotos": [("digitel-crucero", "Estación Crucero de Lechería en montaje"), ("digitel-torre", "Mástil terminado sobre la azotea"),
+                  ("digitel-supervision", "El Ing. Gabriel Forero en la azotea, junto al gabinete del mástil"),
                   ("digitel-andamio", "Montaje con andamio"), ("digitel-izado", "Izado de secciones del mástil"),
-                  ("digitel-antenas", "Soportes de antenas"), ("digitel-azotea", "Base del mástil y barandas en azotea")],
+                  ("digitel-antenas", "Soportes de antenas"), ("digitel-azotea", "Base del mástil y barandas en azotea"),
+                  ("digitel-gabinete", "Gabinete y canalización eléctrica sobre su base de concreto"), ("digitel-escalera", "Acceso a la azotea por escalera de gato")],
     },
     {
         "slug": "plaza-mayor",
