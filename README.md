@@ -17,6 +17,8 @@ Flujo: editar `contenido.py`, `python3 build.py`, revisar con `cd public && pyth
 
 ### Fotos
 
+- **Mejoradas con ChatGPT (octubre 2026):** 18 fotos del brochure pasaron por ChatGPT con la instrucción de no añadir ni cambiar nada (`fuentes/chatgpt/`, exportadas con `herramientas/fotos_gpt.py`). Cada una se comparó con su original antes de aprobarla. Descartadas: `srv-ingenieria` (cara inventada) y `srv-levantamientos` (marca inventada en el equipo). En `digitel-antenas` el cielo gris pasó a azul. Originales del brochure en `fuentes/brochure/`.
+
 Las fotos del brochure venían a 300 a 900 px. Se pasaron por Real-ESRGAN x4plus en CPU (`esrgan.py`, arquitectura RRDBNet sin basicsr) y después por `fotos.py`: CLAHE suave en luminancia, niveles al 0,4 y 99,6 %, saturación +8 %. Las del teléfono se reducen al 50 % antes de mejorarlas para que salgan a 2160 px.
 
 ## Dirección de diseño

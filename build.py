@@ -4,7 +4,7 @@ import html, os, re
 from contenido import EMPRESA as E, SERVICIOS, CLIENTES, OBRAS, CUADRO
 
 RAIZ = os.path.join(os.path.dirname(os.path.abspath(__file__)), "public")
-V = "10"
+V = "11"
 esc = html.escape
 MARCA = open(os.path.join(RAIZ, "img", "marca.svg")).read()
 LOGO = open(os.path.join(RAIZ, "img", "logo.svg")).read()
