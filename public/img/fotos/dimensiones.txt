@@ -1,10 +1,10 @@
-deposito-columnas 1600 1200
-deposito-cercha 1200 1600
-deposito-montaje 1200 1600
-deposito-acarreo 1600 1032
-gabriel-forero 1600 1200
-plaza-mayor-rio 1200 1600
-srv-procura 1200 1600
+deposito-columnas 1080 810
+deposito-cercha 810 1080
+deposito-montaje 810 1080
+deposito-acarreo 1080 696
+gabriel-forero 1080 810
+plaza-mayor-rio 810 1080
+srv-procura 810 1080
 tijerazo-foso 1033 1522
 tijerazo-estructura 965 1630
 tijerazo-entrepiso 1055 1491

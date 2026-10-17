@@ -4,7 +4,7 @@ import html, os, re
 from contenido import EMPRESA as E, SERVICIOS, CLIENTES, OBRAS, CUADRO
 
 RAIZ = os.path.join(os.path.dirname(os.path.abspath(__file__)), "public")
-V = "13"
+V = "14"
 esc = html.escape
 MARCA = open(os.path.join(RAIZ, "img", "marca.svg")).read()
 LOGO = open(os.path.join(RAIZ, "img", "logo.svg")).read()
@@ -19,8 +19,8 @@ def img(nombre, alt, base, tam="(min-width: 900px) 50vw, 100vw", clase="", carga
     """Fotos en dos anchos: -800 y -1600."""
     w, h = DIM.get(nombre, (1600, 1200))
     extra = ' fetchpriority="high"' if prioridad else ""
-    return (f'<img class="{clase}" src="{base}img/fotos/{nombre}-800.webp" '
-            f'srcset="{base}img/fotos/{nombre}-800.webp 800w, {base}img/fotos/{nombre}-1600.webp 1600w" '
+    return (f'<img class="{clase}" src="{base}img/fotos/{nombre}-800.webp?v={V}" '
+            f'srcset="{base}img/fotos/{nombre}-800.webp?v={V} 800w, {base}img/fotos/{nombre}-1600.webp?v={V} 1600w" '
             f'sizes="{tam}" width="{w}" height="{h}" alt="{esc(alt)}" loading="{carga}" decoding="async"{extra}>')
 
 
@@ -286,7 +286,7 @@ def memoria(i, o):
     descr = "".join(f"<p>{esc(p)}</p>" for p in o["descripcion"])
     alcance = "".join(f"<li>{esc(a)}</li>" for a in o["alcance"])
     datos = "".join(f"<tr><th scope=\"row\">{esc(k)}</th><td>{esc(v)}</td></tr>" for k, v in o["datos"])
-    fotos = "".join(f'<figure><a href="{b}img/fotos/{n}-1600.webp" class="galeria__a" data-pie="{esc(p)}">{img(n, p, b, "(min-width: 900px) 33vw, 50vw")}</a><figcaption>{esc(p)}</figcaption></figure>' for n, p in o["fotos"])
+    fotos = "".join(f'<figure><a href="{b}img/fotos/{n}-1600.webp?v={V}" class="galeria__a" data-pie="{esc(p)}">{img(n, p, b, "(min-width: 900px) 33vw, 50vw")}</a><figcaption>{esc(p)}</figcaption></figure>' for n, p in o["fotos"])
     portada = ""
     if len(o["fotos"]) >= 3:
         f = o["fotos"]
