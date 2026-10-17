@@ -22,7 +22,7 @@
   }
 
   // Aparición al hacer scroll (tarjetas de obras y servicios)
-  var aparecen = document.querySelectorAll('.srv, .obra-t, .cifras > div, .galeria figure');
+  var aparecen = document.querySelectorAll('.srv, .obra-t, .cifras > div');
   if (!reducir && 'IntersectionObserver' in window) {
     var vigia = new IntersectionObserver(function (es) {
       es.forEach(function (e) {

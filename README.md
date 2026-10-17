@@ -9,7 +9,7 @@ Estática, sin dependencias en el navegador. Se publica en Cloudflare Pages con 
 - `contenido.py`: todos los textos, servicios, obras (con su memoria descriptiva) y el cuadro de obras.
 - `build.py`: genera `public/index.html`, `public/obras/index.html` y una página de memoria descriptiva por obra en `public/obras/<slug>/`.
 - `herramientas/fotos.py`: corrige y exporta las fotos a WebP 800 y 1600 px en `public/img/fotos/`. Si existe la versión mejorada con Real-ESRGAN la usa; si no, la original.
-- `public/img/logo.svg` y `marca.svg`: logo vectorizado (potrace) a partir del PNG del brochure. Se pintan con `currentColor`.
+- `public/img/logo.svg` y `marca.svg`: logo vectorizado con `herramientas/logo_vector.py` (PNG del brochure subido x10, suavizado y trazado con potrace) para que aguante a tamaño gigante. Se pintan con `currentColor`.
 - `public/_headers`: CSP estricta y caché. Nada inline salvo el JSON-LD, que es un bloque de datos.
 - `fuentes/`: fotos originales que mandó la familia.
 
@@ -21,6 +21,7 @@ Las fotos del brochure venían a 300 a 900 px. Se pasaron por Real-ESRGAN x4plus
 
 ## Dirección de diseño
 
+- **Portada:** el techo (franja blanca, cuña amarilla y panel marino) se ancla con desplazamientos fijos (`--t`, `--iz`, `--de`) y el texto va debajo, así no se pisan en ninguna altura de pantalla.
 - **Origen:** el brochure corporativo 2025. La portada copia su composición: foto arriba, franja blanca y panel marino en forma de techo, cuña amarilla a la izquierda y el 0701 gigante en blanco cortado por el borde inferior.
 - **Logo:** el 0701 se usa como supergráfico en portada, cabeceras de página, tarjeta de Plaza Mayor y contacto (blanco sobre marino o en tono sobre tono).
 - **Tipografía:** el brochure usa Gotham. Aquí Red Hat Display (titulares en mayúsculas 800, antetítulos con tracking .2em como el "INGENIERIA" del logo) y Red Hat Text para el texto. Alojadas en `public/fonts`.
